@@ -7,10 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "About", about_path %>
-<%= link_to "Contact", contact_path %>
+
+<%= render 'layouts/header' %>
 <%= yield %>
-<p>Copyright 2014</p>
+<%= render 'layouts/footer' %>
 
 </body>
 </html>
