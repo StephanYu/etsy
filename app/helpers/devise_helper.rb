@@ -7,8 +7,11 @@ module DeviseHelper
     sentence = I18n.t('errors.messages.not_saved', count: resource.errors.count, resource: resource.class.model_name.human.downcase)
     
     html = <<-HTML
-    <div>
-      <button type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
       <h4>#{sentence}</h4>
       #{messages}
     </div>
