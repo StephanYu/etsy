@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :orders
 
   devise_for :users
-  resources :listings
+  
+  resources :listings do
+    resources :orders
+  end
+
   root 'listings#index'
 
   get 'seller' => "listings#seller"
