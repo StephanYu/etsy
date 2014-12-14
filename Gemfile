@@ -1,4 +1,3 @@
-source 'https://code.stripe.com'
 source 'https://rubygems.org'
 ruby '2.0.0'
 
@@ -15,7 +14,6 @@ gem 'jquery-rails', '~> 4.0.0.beta2'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'stripe', :source => 'https://code.stripe.com/'
 
 group :development, :test do
   gem 'sqlite3'
