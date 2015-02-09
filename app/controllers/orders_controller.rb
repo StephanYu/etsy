@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @listing = Listing.find(params[:listing_id])
-    respond_with(@order)
   end
 
   def create
