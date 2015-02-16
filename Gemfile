@@ -16,6 +16,7 @@ gem 'jquery-rails', '~> 4.0.3'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'stripe'
+gem 'jquery-turbolinks', '~> 0.2.1'
 
 group :development, :test do
   gem 'sqlite3'
