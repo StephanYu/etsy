@@ -1,24 +1,24 @@
 Rails.application.routes.draw do
+  scope "(:locale)", locale: /en|en-GB|de/ do 
+    resources :categories
 
-  resources :categories
+    devise_for :users
+    
+    resources :listings do
+      resources :orders, only: [:new, :create]
+    end
 
-  devise_for :users
-  
-  resources :listings do
-    resources :orders, only: [:new, :create]
+    root 'listings#index'
+
+    get 'seller' => "listings#seller"
+
+    get 'about', to: 'pages#about'
+
+    get 'contact', to: 'pages#contact'
+
+    get 'sales' => 'orders#sales'
+    get 'purchases' => 'orders#purchases'
   end
-
-  root 'listings#index'
-
-  get 'seller' => "listings#seller"
-
-  get 'about', to: 'pages#about'
-
-  get 'contact', to: 'pages#contact'
-
-  get 'sales' => 'orders#sales'
-  get 'purchases' => 'orders#purchases'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
