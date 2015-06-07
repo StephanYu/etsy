@@ -17,6 +17,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'stripe'
 gem 'jquery-turbolinks', '~> 0.2.1'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'sqlite3'

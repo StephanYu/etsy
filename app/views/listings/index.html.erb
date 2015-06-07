@@ -21,7 +21,13 @@
     <% end %>
   </div>
 </div>
+
 <br>
+
+<%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+
+<br>
+
 <% if user_signed_in? %>
   <%= link_to 'New Listing', new_listing_path, class: 'btn btn-link', data: { no_turbolink: true } %>
 <% end %>
