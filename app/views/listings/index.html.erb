@@ -1,31 +1,34 @@
-<div class="jumbotron">
-  <%= t('jumbotron_title_html') %>
-  <%= t('jumbotron_subtitle_html') %>
-</div>
 
-<div class="center">
-  <div class="row">
-    <% @listings.each do |listing| %>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <%= link_to image_tag(listing.image.url), listing %>
-          <div class="caption">
-            <h3><%= listing.name %></h3>
-            <p><%= number_to_currency(listing.price) %></p>
-            <p><%= t('posted_by', user: listing.user.name) %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+<div class="jumbotron">
+  <div class="container">
+    <%= t('jumbotron_title_html') %>
+    <%= t('jumbotron_subtitle_html') %>
   </div>
 </div>
 
-<br>
+<div class="container" id="main-container">
+  <div class="center">
+    <div class="row">
+      <% @listings.each do |listing| %>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <%= link_to image_tag(listing.image.url), listing %>
+            <div class="caption">
+              <h3><%= listing.name %></h3>
+              <p><%= number_to_currency(listing.price) %></p>
+              <p><%= t('posted_by', user: "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize[0]}.") %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+  <br>
+  <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+  <br>
 
-<br>
-
-<% if user_signed_in? %>
-  <%= link_to t('add_listing'), new_listing_path, class: 'btn btn-primary', data: { no_turbolink: true } %>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to t('add_listing'), new_listing_path, class: 'btn btn-link', data: { no_turbolink: true } %>
+  <% end %>
+</div>

@@ -21,18 +21,18 @@
 
 en:
   add_listing: Add Listing
-  posted_by: posted_by %{user}
+  posted_by: posted by %{user}
   jumbotron_title_html: <h1>Hand-crafted items from <br> around the world</h1>
   jumbotron_subtitle_html: <h2>Discover one-of-a-kind items</h2>
   navbar:
     about: About
     contact: Contact
     browse: Browse
-    language: Language
+    language: EN
     english: English
     english_uk: English-UK
     german: German
-    sellers_account: Seller's Account
+    sellers_account: Sell
     sales_history: Sales History
     manage_listings: Manage Listings
     purchase_history: Purchase History

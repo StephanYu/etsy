@@ -10,10 +10,11 @@ class ListingsController < ApplicationController
   end
 
   def index
+    # binding.pry
     if params[:category].blank?
       @listings = Listing.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 4)
     else
-      @category_id = Category.find_by(name: params[:category].name).id
+      @category_id = Category.find_by(name: params[:category]).id
       @listings = Listing.where(category_id: @category_id).order('created_at DESC').paginate(:page => params[:page], :per_page => 4)
     end
   end
@@ -21,6 +22,12 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @reviews = Review.where(listing_id: @listing.id)
+    if @reviews.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /listings/new
@@ -41,15 +48,15 @@ class ListingsController < ApplicationController
     if current_user.recipient.blank?
       Stripe.api_key = ENV["STRIPE_API_KEY"]
       token = params[:stripeToken]
+      name = "#{current_user.first_name} #{current_user.last_name}" 
 
       recipient = Stripe::Recipient.create(
-        :name => current_user.name,
+        :name => name,
         :type => "individual",
         :bank_account => token
         )
-
-      current_user.recipient = recipient.id
-      current_user.save
+      # binding.pry
+      current_user.update_attribute(:recipient, recipient.id)
     end
     
     respond_to do |format|

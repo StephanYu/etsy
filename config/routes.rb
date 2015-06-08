@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /en|en-GB|de/ do 
-    resources :categories
+
+# 
+  scope "/:locale", locale: /en|en-GB|de/  do 
+    resources :categories,  except: [:show]
 
     devise_for :users
     
     resources :listings do
+      resources :reviews, except: [:show, :index]
       resources :orders, only: [:new, :create]
     end
 
