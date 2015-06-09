@@ -25,7 +25,7 @@ listings = [
     name: "Test",
     description: "Test description",
     price: 100,
-    image: File.open("https://dl.dropboxusercontent.com/1/view/wwlnr96k58yxvk9/Apps/Etsyreborn/original/1_normal_colour-flash-monogrammed-cushion.jpg"),
+    image: File.new("https://dl.dropboxusercontent.com/1/view/wwlnr96k58yxvk9/Apps/Etsyreborn/original/1_normal_colour-flash-monogrammed-cushion.jpg"),
     user_id: 1,
     category_id: 1
   }

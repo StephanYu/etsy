@@ -9,7 +9,7 @@
       <h3><%= @listing.name %></h3>
       <p><%= number_to_currency(@listing.price) %></p>
       <p><%= @listing.description %></p>
-      <div class="star-rating">Average Rating: <%= @avg_rating %></div>
+      <div class="star-rating" data-score= <%= review.rating %> ></div>
       <br>
       <div class="center">
         <%= link_to 'Buy Now', new_listing_order_path(@listing), class: 'btn btn-primary', data: { no_turbolink: true }  %>
@@ -26,7 +26,7 @@
           <% @reviews.each do |review| %>
             <tr>
               <td>
-                <div class="star-rating"><%= review.rating %></div>
+                <div class="star-rating" data-score= <%= review.rating %> ></div>
                 <p><%= review.comment %></p>
               </td>
             </tr>
@@ -41,3 +41,13 @@
   <% end %>
   <%= link_to 'Back', listings_path, class: 'btn btn-link' %>
 </div>
+
+<script>
+  $('.star-rating').raty({
+    path: "https://dl.dropboxusercontent.com/1/view/wwlnr96k58yxvk9/Apps/Etsyreborn/stars",
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
