@@ -9,7 +9,10 @@
       <h3><%= @listing.name %></h3>
       <p><%= number_to_currency(@listing.price) %></p>
       <p><%= @listing.description %></p>
-      <div class="star-rating" data-score= <%= review.rating %> ></div>
+      <p><%= "posted by #{@listing.user.first_name.capitalize} #{@listing.user.last_name.capitalize[0]}." %></p>
+
+      <div class="star-rating" data-score= <%= @avg_rating %> >Average Rating:   </div>
+      <p><%= "from a total of #{@reviews.length} reviews" %></p>
       <br>
       <div class="center">
         <%= link_to 'Buy Now', new_listing_order_path(@listing), class: 'btn btn-primary', data: { no_turbolink: true }  %>
@@ -27,7 +30,10 @@
             <tr>
               <td>
                 <div class="star-rating" data-score= <%= review.rating %> ></div>
-                <p><%= review.comment %></p>
+                <br>
+                <p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
+                <p><%= "posted by #{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %></p>
+                <p><%= review.created_at.strftime("%-m/%-d/%-y") %></p>
               </td>
             </tr>
           <% end %>
@@ -44,7 +50,8 @@
 
 <script>
   $('.star-rating').raty({
-    path: "https://dl.dropboxusercontent.com/1/view/wwlnr96k58yxvk9/Apps/Etsyreborn/stars",
+    // path: "https://dl.dropboxusercontent.com/1/view/wwlnr96k58yxvk9/Apps/Etsyreborn/stars",
+    path: "/assets",
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
