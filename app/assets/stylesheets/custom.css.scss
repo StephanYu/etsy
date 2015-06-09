@@ -23,19 +23,17 @@ html {
 .navbar-default {
   background-color: #efefeb;
   margin-bottom: 0px;
-}
-
-.navbar-default .navbar-brand {
-  font-family: guardian-egyptt, georgia, serif;
-  font-weight: 400;
-  color: #d5641c;
-}
-
-.navbar-default .navbar-nav > li > a {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  color: #0192b5;
+  height: 70px;
+  .navbar-brand {
+    font-family: guardian-egyptt, georgia, serif;
+    font-weight: 400;
+    color: #d5641c;
+  }
+  .navbar-nav > li > a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #0192b5;
+  }
 }
 
 .center {
@@ -49,7 +47,7 @@ html {
 .col-md-6 {
   h3 {font-size: 45px;}
   h5 {font-size: 25px;}
-  p {font-size: 18px;}
+  p  {font-size: 18px;}
 }
 
 .jumbotron {
@@ -57,7 +55,8 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   h1, h2 {
-    font-family: guardian-egyptt, georgia, serif;
+    font-family: "guardian-egyptt", georgia, serif;
+    color: #fff;
   }
 }
 
@@ -68,13 +67,39 @@ html {
 /* LISTINGS
 -------------------------------------------------- */
 
-.listings-container {
+.pages-container {
   margin-top: 40px;
+  #listing-title {
+    font-family: "guardian-egyptt", georgia, serif;
+  }
+  #listing-price {
+    font-weight: bold;
+    font-size: 20px;
+    color: #abce3f;
+  }
+  #listing-author {
+    font-style: italic;
+    font-size: 16px;
+  }
+  #listing-reviews-count {
+    font-size: 14px;
+  }
+  .reviews-title {
+    font-weight: bold;
+  }
 }
 
 #main-container {
   .btn {
     margin-bottom: 20px;
+  }
+  #listing-price-thumbnail {
+    font-weight: bold;
+    font-size: 14px;
+    color: #abce3f;
+  }
+  #listing-author-thumbnail {
+    font-style: italic;
   }
 }
 

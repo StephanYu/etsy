@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EtsyClone</title>
+    <title>EtsyReborn</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+    <%= favicon_link_tag 'etsy_favicon.ico' %>
     <%= csrf_meta_tags %>
     <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
   </head>

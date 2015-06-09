@@ -1,4 +1,4 @@
-<div class="container listings-container">
+<div class="container pages-container">
   <div class="row">
     <div class="col-md-6">
       <div class="thumbnail">
@@ -6,25 +6,27 @@
       </div>
     </div>
     <div class="col-md-6">
-      <h3><%= @listing.name %></h3>
-      <p><%= number_to_currency(@listing.price) %></p>
-      <p><%= @listing.description %></p>
-      <p><%= "posted by #{@listing.user.first_name.capitalize} #{@listing.user.last_name.capitalize[0]}." %></p>
+      <h3 id="listing-title"><%= @listing.name.capitalize %></h3>
+      <p id="listing-price"><%= number_to_currency(@listing.price) %></p>
+      <p id-"listing-description"><%= @listing.description %></p>
+      <p id="listing-author"><%= "posted by #{@listing.user.first_name.capitalize} #{@listing.user.last_name.capitalize[0]}." %></p>
 
-      <div class="star-rating" data-score= <%= @avg_rating %> >Average Rating:   </div>
-      <p><%= "from a total of #{@reviews.length} reviews" %></p>
+      <p class="star-rating" data-score= <%= @avg_rating %> ></p>
+      <p id="listing-reviews-count"><%= "#{@reviews.length} reviews" %></p>
       <br>
-      <div class="center">
-        <%= link_to 'Buy Now', new_listing_order_path(@listing), class: 'btn btn-primary', data: { no_turbolink: true }  %>
-        <%= link_to 'Write Review', new_listing_review_path(@listing), class: 'btn btn-primary', data: { no_turbolink: true }  %>
+      <div>
+        <%= link_to 'Buy Now', new_listing_order_path(@listing), class: 'btn btn-sm btn-success', data: { no_turbolink: true }  %>
+        <%= link_to 'Write Review', new_listing_review_path(@listing), class: 'btn btn-sm btn-info', data: { no_turbolink: true }  %>
       </div>
     </div>
   </div>
   <div class="col-md-12">
     <% if @reviews.blank? %>
-      <h4>No reviews yet. Be the first to write one!</h4>
+      <h4 class="reviews-title">Customer Reviews</h4>
+      <h6>No reviews yet. Be the first to write one!</h6>
     <% else %>
-      <table class="table">
+      <h4 class="reviews-title">Customer Reviews</h4>
+      <table class="table reviews-table">
         <tbody>
           <% @reviews.each do |review| %>
             <tr>
