@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 # 
-  scope "/:locale", locale: /en|en-GB|de/  do 
+  scope "/:locale", locale: /en|en-GB|de/ do 
     resources :categories,  except: [:show]
 
     devise_for :users
