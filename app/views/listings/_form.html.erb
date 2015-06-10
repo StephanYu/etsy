@@ -46,15 +46,15 @@
 
     <div class="form-group">
       <%= label_tag :country %>
-      <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
+      <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control", placeholder: "e.g. US" } %>
     </div>
     <div class="form-group">
       <%= label_tag :routing_number %>
-      <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
+      <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control", placeholder: "e.g. 111000025" } %>
     </div>
     <div class="form-group">
       <%= label_tag :account_number %>
-      <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
+      <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control", placeholder: "e.g. 000123456789" } %>
     </div>
   <% end %>
 
