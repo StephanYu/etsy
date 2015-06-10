@@ -1,7 +1,7 @@
 == README
 
 This test app is a two-sided marketplace similar to Etsy. 
-This sample app has been deployed to Heroku. Please visit: https://etsy-reborn.herokuapp.com/
+This sample app has been deployed to Heroku. Please visit: https://etsy-reborn.herokuapp.com/en
 Images are hosted on Dropbox.
 
 
