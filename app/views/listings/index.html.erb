@@ -10,7 +10,7 @@
   <div class="center">
     <div class="row">
       <% unless params[:category].blank? %>
-        <h3><%= @category.name.capitalize %></h3>
+        <h3 id="category-title"><%= @category.name.capitalize %></h3>
       <% end %>
 
       <% @listings.each do |listing| %>
