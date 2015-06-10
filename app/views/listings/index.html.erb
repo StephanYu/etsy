@@ -20,7 +20,7 @@
             <div class="caption">
               <h3><%= listing.name.capitalize %></h3>
               <p id="listing-price-thumbnail"><%= number_to_currency(listing.price) %></p>
-              <p id="listing-author-thumbnail"><%= t('posted_by', user: "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize[0]}.") if current_user %></p>
+              <p id="listing-author-thumbnail"><%= t('posted_by', user: "#{listing.user.first_name.capitalize} #{listing.user.last_name.capitalize[0]}.") if current_user %></p>
             </div>
           </div>
         </div>
