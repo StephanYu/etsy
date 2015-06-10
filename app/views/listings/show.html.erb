@@ -21,6 +21,13 @@
     </div>
   </div>
   <div class="col-md-12">
+    <div class="row">
+      <% if current_user == @listing.user %>
+        <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-link' %> |
+      <% end %>
+      <%= link_to 'Back', listings_path, class: 'btn btn-link' %>
+    </div>
+
     <% if @reviews.blank? %>
       <h4 class="reviews-title">Customer Reviews</h4>
       <h6>No reviews yet. Be the first to write one!</h6>
@@ -33,9 +40,15 @@
               <td>
                 <div class="star-rating" data-score= <%= review.rating %> ></div>
                 <br>
-                <p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
-                <p><%= "posted by #{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %></p>
+                <p id="review-text"><%= "\"#{h(review.comment).gsub(/\n/, '<br/>').html_safe}\"" %></p>
+                <p id="review-author"><%= "posted by #{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %></p>
                 <p><%= review.created_at.strftime("%-m/%-d/%-y") %></p>
+                <% if user_signed_in? %>
+                  <% if (review.user == current_user) || (current_user.admin?) %>
+                    <%= link_to "Edit", edit_listing_review_path(@listing, review) %>
+                    <%= link_to "Delete", listing_review_path(@listing, review), method: :delete %>
+                  <% end %>
+                <% end %>
               </td>
             </tr>
           <% end %>
@@ -43,11 +56,6 @@
       </table>
     <% end %>
   </div>
-
-  <% if current_user == @listing.user %>
-    <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-link' %> |
-  <% end %>
-  <%= link_to 'Back', listings_path, class: 'btn btn-link' %>
 </div>
 
 <script>
