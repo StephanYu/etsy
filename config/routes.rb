@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-# 
   scope "/:locale", locale: /en|en-GB|de/ do 
     resources :categories,  except: [:show]
 
@@ -11,7 +10,6 @@ Rails.application.routes.draw do
       resources :orders, only: [:new, :create]
     end
 
-    # root 'listings#index'
     root 'pages#home'
 
     get 'seller' => "listings#seller"
@@ -23,6 +21,7 @@ Rails.application.routes.draw do
     get 'sales' => 'orders#sales'
     get 'purchases' => 'orders#purchases'
   end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

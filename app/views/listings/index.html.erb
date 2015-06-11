@@ -7,13 +7,33 @@
 <div class="filter">
   <div class="container">
     <%= form_tag listings_path, method: :get do %>
-      <%= label_tag :category %>
-      <%= select_tag(:category, options_from_collection_for_select(Category.all, :name, :name, params[:category]), {include_blank: true}) %>
-      <%= label_tag :min_price %>
-      <%= text_field_tag :min_price, params[:min_price] %>
-      <%= label_tag :max_price %>
-      <%= text_field_tag :max_price, params[:max_price] %>
-      <%= submit_tag "Filter", name: nil %>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+          <%= label_tag :category %> 
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <%= label_tag :min_price %>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <%= label_tag :max_price %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+          <%= select_tag(:category, options_from_collection_for_select(Category.all, :name, :name, params[:category]), {include_blank: true, class: "form-control input-sm"}) %>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <%= text_field_tag :min_price, params[:min_price], placeholder: "minimum", class: "form-control input-sm" %>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <%= text_field_tag :max_price, params[:max_price], placeholder: "maximum", class: "form-control input-sm" %>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <%= submit_tag "Filter", name: nil, class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+      
     <% end %>
   </div>
 </div>
@@ -44,7 +64,7 @@
   <div class="center">
     <div><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></div>
   </div>
-  
+
   <br>
 
   <% if user_signed_in? %>

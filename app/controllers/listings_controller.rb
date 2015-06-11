@@ -3,28 +3,25 @@ class ListingsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show] 
   before_filter :check_user, only: [:edit, :update, :destroy]
 
-  # GET /listings
-  # GET /listings.json
   def seller
-    @listings = Listing.where(user: current_user).order('created_at DESC')
+    @listings ||= Listing.where(user: current_user).order('created_at DESC')
   end
 
   def index
-    # binding.pry
     if params[:category].blank?
-      @listings = Listing.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 8)
+      @listings ||= Listing.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 8)
+      @listings = @listings.where("price > ?", params[:min_price]) if params[:min_price].present?
+      @listings = @listings.where("price < ?", params[:max_price]) if params[:max_price].present?
     else
-      @category = Category.find_by(name: params[:category])
+      @category ||= Category.find_by(name: params[:category])
       @category_id = @category.id
       @listings = Listing.where(category_id: @category_id).order('created_at DESC').paginate(:page => params[:page], :per_page => 8)
-      
-      @listings = @listings.where("price > ?", params["min_price"]) if params["min_price"].present?
-      @listings = @listings.where("price < ?", params["max_price"]) if params["max_price"].present?
+
+      @listings = @listings.where("price > ?", params[:min_price]) if params[:min_price].present?
+      @listings = @listings.where("price < ?", params[:max_price]) if params[:max_price].present?
     end
   end
 
-  # GET /listings/1
-  # GET /listings/1.json
   def show
     @reviews = Review.where(listing_id: @listing.id).order("created_at DESC")
     if @reviews.blank?
@@ -34,17 +31,13 @@ class ListingsController < ApplicationController
     end
   end
 
-  # GET /listings/new
   def new
     @listing = Listing.new
   end
 
-  # GET /listings/1/edit
   def edit
   end
 
-  # POST /listings
-  # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
@@ -59,7 +52,6 @@ class ListingsController < ApplicationController
         :type => "individual",
         :bank_account => token
         )
-      # binding.pry
       current_user.update_attribute(:recipient, recipient.id)
     end
     
@@ -74,8 +66,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /listings/1
-  # PATCH/PUT /listings/1.json
   def update
     respond_to do |format|
       if @listing.update(listing_params)
@@ -88,8 +78,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  # DELETE /listings/1
-  # DELETE /listings/1.json
   def destroy
     @listing.destroy
     respond_to do |format|

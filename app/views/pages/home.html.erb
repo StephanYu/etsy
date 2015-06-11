@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="container" class="index-container">
+<div class="container index-container">
   <div class="center">
     <div class="row">
       <% @listings.each do |listing| %>
@@ -30,7 +30,7 @@
     <div><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></div>
     <div><%= link_to t('see_all'), listings_path, class: 'btn btn-link' %></div>
   </div>
-  
+
   <br>
 
   <% if user_signed_in? %>

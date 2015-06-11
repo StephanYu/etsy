@@ -105,6 +105,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
+  margin-bottom: 0px;
   h1 {
     color: #fff;
     text-shadow: 1px 1px 2px #828282;
@@ -130,6 +131,9 @@ html {
 }
 .filter {
   margin-bottom: 30px;
+  background-color: #d8d8cf;
+  padding: 20px;
+  font-size: 12px;
 }
 
 .pages-container {
