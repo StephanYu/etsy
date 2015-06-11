@@ -1,0 +1,33 @@
+<div class="jumbotron" id="search-jumbotron">
+  <div class="container">
+    <%= t('search_jumbotron_title_html') %>
+  </div>
+</div>
+
+<div class="container index-container">
+  <div class="center">
+    <div class="row">
+      <% @listings.each do |listing| %>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <%= link_to image_tag(listing.image.url), listing %>
+            <div class="caption">
+              <h3><%= listing.name.capitalize %></h3>
+              <p id="listing-price-thumbnail"><%= number_to_currency(listing.price) %></p>
+              <p id="listing-author-thumbnail"><%= t('posted_by', user: "#{listing.user.first_name.capitalize} #{listing.user.last_name.capitalize[0]}.") if current_user %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="center">
+    <div><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></div>
+    <div><%= link_to t('see_all'), listings_path, class: 'btn btn-link' %></div>
+  </div>
+
+  <br>
+</div>

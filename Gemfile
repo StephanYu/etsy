@@ -20,6 +20,7 @@ gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'pry-byebug'
+gem 'searchkick'
 
 group :development, :test do
   gem 'sqlite3'

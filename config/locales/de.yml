@@ -5,6 +5,7 @@ de:
   jumbotron_title_html: <h1>Handgemachte Kleinigkeiten <br> aus der ganzen Welt</h1>
   jumbotron_subtitle_html: <h2>Entdecken Sie einzigartige Kunstobjekte</h2>
   listings_jumbotron_title_html: <h1>Kaufen Sie direkt <br>von den Erzeugern <br>aus der ganzen Welt</h1>
+  search_jumbotron_title_html: <h1>Gefunden <br> wonach Sie gesucht haben?</h1>
   navbar:
     about: Über uns
     contact: Kontakt

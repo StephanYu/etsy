@@ -7,6 +7,14 @@ class ListingsController < ApplicationController
     @listings ||= Listing.where(user: current_user).order('created_at DESC')
   end
 
+  def search
+    if params[:search].present?
+      @listings = Listing.search(params[:search])
+    else
+      @listings = Listing.all
+    end
+  end
+
   def index
     if params[:category].blank?
       @listings ||= Listing.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 8)

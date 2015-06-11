@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     devise_for :users
     
     resources :listings do
+      collection do
+        get 'search'
+      end
       resources :reviews, except: [:show, :index]
       resources :orders, only: [:new, :create]
     end
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
     get 'sales' => 'orders#sales'
     get 'purchases' => 'orders#purchases'
   end
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

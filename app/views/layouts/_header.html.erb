@@ -24,6 +24,12 @@
             <% end %>
           </ul>
         </li>
+        <%= form_tag search_listings_path, method: :get, class: "navbar-form navbar-left" do %>
+            <p>
+              <%= text_field_tag :search, params[:search], class: "form-control" %>
+              <%= submit_tag "Search", name: nil, class: "btn btn-info" %>
+            </p>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

@@ -68,8 +68,23 @@ html {
   // min-height: 400px;
 }
 
+#search-jumbotron {
+  background-image: url("https://dl.dropboxusercontent.com/s/7l39qj2meze1mat/BespokeGlassTile.jpg?dl=0");
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    text-shadow: 1px 1px 2px #828282;
+  }
+}
+
 .alert {
   margin-bottom: 0px;
+}
+
+.navbar-form {
+  p {
+    margin: 4px;
+  }
 }
 
 /* LISTINGS
