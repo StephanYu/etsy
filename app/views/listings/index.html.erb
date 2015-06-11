@@ -40,7 +40,11 @@
   </div>
 
   <br>
-  <%= will_paginate @listings, renderer: BootstrapPagination::Rails, class: "center" %>
+
+  <div class="center">
+    <div><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></div>
+  </div>
+  
   <br>
 
   <% if user_signed_in? %>

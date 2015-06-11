@@ -9,10 +9,6 @@
 <div class="container" class="index-container">
   <div class="center">
     <div class="row">
-      <% unless params[:category].blank? %>
-        <h3 id="category-title"><%= @category.name.capitalize %></h3>
-      <% end %>
-
       <% @listings.each do |listing| %>
         <div class="col-md-3">
           <div class="thumbnail">
@@ -29,10 +25,12 @@
   </div>
 
   <br>
+
   <div class="center">
     <div><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></div>
     <div><%= link_to t('see_all'), listings_path, class: 'btn btn-link' %></div>
   </div>
+  
   <br>
 
   <% if user_signed_in? %>
