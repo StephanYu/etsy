@@ -17,6 +17,9 @@ class ListingsController < ApplicationController
       @category = Category.find_by(name: params[:category])
       @category_id = @category.id
       @listings = Listing.where(category_id: @category_id).order('created_at DESC').paginate(:page => params[:page], :per_page => 8)
+      
+      @listings = @listings.where("price > ?", params["min_price"]) if params["min_price"].present?
+      @listings = @listings.where("price < ?", params["max_price"]) if params["max_price"].present?
     end
   end
 

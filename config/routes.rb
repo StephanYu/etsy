@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       resources :orders, only: [:new, :create]
     end
 
-    root 'listings#index'
+    # root 'listings#index'
+    root 'pages#home'
 
     get 'seller' => "listings#seller"
 

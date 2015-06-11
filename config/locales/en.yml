@@ -24,6 +24,7 @@ en:
   posted_by: posted by %{user}
   jumbotron_title_html: <h1>Hand-crafted items from <br> around the world</h1>
   jumbotron_subtitle_html: <h2>Discover one-of-a-kind items</h2>
+  listings_jumbotron_title_html: <h1>Shop directly from <br> people around the world</h1>
   navbar:
     about: About
     contact: Contact

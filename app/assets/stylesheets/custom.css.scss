@@ -55,13 +55,17 @@ html {
 }
 
 .jumbotron {
-  background-image: url("https://dl.dropboxusercontent.com/s/q5adtonvsa7w88k/susansimonini.jpg?dl=0");
-  background-repeat: no-repeat;
-  background-size: cover;
   h1, h2 {
     font-family: "guardian-egyptt", georgia, serif;
     color: #fff;
   }
+}
+
+#home-jumbotron {
+  background-image: url("https://dl.dropboxusercontent.com/s/q5adtonvsa7w88k/susansimonini.jpg?dl=0");
+  background-repeat: no-repeat;
+  background-size: cover;
+  // min-height: 400px;
 }
 
 .alert {
@@ -71,7 +75,7 @@ html {
 /* LISTINGS
 -------------------------------------------------- */
 
-.pages-container {
+#listings-container {
   margin-top: 40px;
   #listing-title {
     font-family: "guardian-egyptt", georgia, serif;
@@ -96,8 +100,18 @@ html {
     font-size: 16px;
   }
 }
-
-#main-container {
+#listings-jumbotron {
+  background-image: url("https://dl.dropboxusercontent.com/s/k3zqs8k63357bm4/fennecdesignco.jpg?dl=0");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  h1 {
+    color: #fff;
+    text-shadow: 1px 1px 2px #828282;
+    font-size: 40px;
+  }
+}
+.index-container {
   .btn {
     margin-bottom: 20px;
   }
@@ -111,9 +125,55 @@ html {
   }
   #category-title {
     font-family: "guardian-egyptt", georgia, serif;
+    margin-bottom: 30px;
   }
 }
+.filter {
+  margin-bottom: 30px;
+}
 
+.pages-container {
+  h3, h4 {
+    margin: 30px 0px 20px;
+    color: #074659;
+  }
+  .section-title {
+    font-family: "guardian-egyptt", georgia, serif;
+    padding: 0px;
+    h3 {
+      font-weight: bold;
+      // color: #074659;
+    }
+  }
+  .nav-tabs {
+    li.active > a {
+      background-color: transparent;
+      color: #01bbe8;
+
+    }
+    a, p {
+      color: #0192b5;
+      font-family: "guardian-egyptt", georgia, serif;
+    }
+    a:hover {
+      background-color: transparent;
+    }
+  }
+  .tab-content {
+    h4, p {
+      font-family: "guardian-egyptt", georgia, serif;
+    }
+  }
+  .contact-information {
+    font-family: "guardian-egyptt", georgia, serif;
+    .col-md-2 {
+      font-weight: bold;
+    }
+  }
+}
+.orders-container {
+  margin-top: 40px;
+}
 
 /* FOOTER
 -------------------------------------------------- */

@@ -1,23 +1,12 @@
 
-<div class="jumbotron" id="listings-jumbotron">
+<div class="jumbotron" id="home-jumbotron">
   <div class="container">
-    <%= t('listings_jumbotron_title_html') %>
+    <%= t('jumbotron_title_html') %>
+    <%= t('jumbotron_subtitle_html') %>
   </div>
 </div>
-<div class="filter">
-  <div class="container">
-    <%= form_tag listings_path, method: :get do %>
-      <%= label_tag :category %>
-      <%= select_tag(:category, options_from_collection_for_select(Category.all, :name, :name, params[:category]), {include_blank: true}) %>
-      <%= label_tag :min_price %>
-      <%= text_field_tag :min_price, params[:min_price] %>
-      <%= label_tag :max_price %>
-      <%= text_field_tag :max_price, params[:max_price] %>
-      <%= submit_tag "Filter", name: nil %>
-    <% end %>
-  </div>
-</div>
-<div class="container index-container">
+
+<div class="container" class="index-container">
   <div class="center">
     <div class="row">
       <% unless params[:category].blank? %>
@@ -40,7 +29,10 @@
   </div>
 
   <br>
-  <%= will_paginate @listings, renderer: BootstrapPagination::Rails, class: "center" %>
+  <div class="center">
+    <div><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></div>
+    <div><%= link_to t('see_all'), listings_path, class: 'btn btn-link' %></div>
+  </div>
   <br>
 
   <% if user_signed_in? %>
